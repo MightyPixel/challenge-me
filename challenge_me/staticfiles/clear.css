@@ -1,0 +1,18 @@
+html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+}
+
+body {
+	padding-top: 60px;
+	background: url(/static/images/site_bg.png);
+}
+
+#site-footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	background: #F5F5F5;
+	padding: 5px;
+	text-align: center;
+}

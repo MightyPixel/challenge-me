@@ -1,0 +1,62 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Challenge Me | {% block title %}Challenges{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ STATIC_URL}}images/favicon.ico" type="image/x-icon" /> 
+
+        <meta name="description" content="Challenge me">
+        <meta name="author" content="The MightyPixel">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}clear.css" rel="stylesheet">
+    </head>
+
+      <body>
+        <div id="barney">
+        </div>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Challenge.Me</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/causes/">Causes</a></li>
+                <li><a href="/challenges/">Challenges</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+                <li class="dropdown ">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span> {{ user.username }}</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/logout/">Изход</a></li>
+                  </ul>
+                </li>
+              {% else %}
+                <!-- <li><a href="/login/">Вход</a></li> -->
+              {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+        <script src="{{ STATIC_URL }}run.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="http://cloud.github.com/downloads/kopipejst/jqSnow/jquery.snow.min.1.0.js"></script>
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

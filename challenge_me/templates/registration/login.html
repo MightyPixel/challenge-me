@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+ {% block content %}
+	{% if form.errors %}
+	    <div class="alert alert-warning">Your username and password didn't match. Please try again.</div>
+	{% endif %}
+
+
+	<form method="post" class="form-signin">
+ 		<h2 class="form-signin-heading">Please sign in</h2>
+	{% csrf_token %}
+	        <input type="text" name="{{ form.username.name }}" class="form-control" id="username" autofocus placeholder="Enter Username"/>
+	        <input type="password" name="{{ form.password.name }}" class="form-control" id="password" placeholder="Enter Password"/>
+	    <input type="hidden" name="next" value="{{ next }}"/>
+	    <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>   
+	</form>
+{% endblock %}

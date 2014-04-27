@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="cause">
+        <div class="title">
+            <h1>{{ cause.title }}</h1>
+        </div>
+        <div id="about">
+            {{ cause.about }}
+        </div>
+        <span style="float: right"> ${{ cause.funding_goal }} funding</span>
+        {% if challenges %}
+            <div>
+                <h4>Challenges:</h4>
+                <ol>
+                {% for challenge in challenges %}
+                    <li>
+                        <div class="challenge">
+                        <a href="{{ challenge.get_absolute_url }}">{{ challenge.goal }}</a>
+                    </li>
+                </ol>
+                </div>
+
+                {% endfor%}
+            </div>
+        {% endif %}
+
+        <a href="/challenges/new">Make Challenge</a>
+
+        <hr />
+        {% if comments %}
+            <div>
+                <h3>Comments:</h3>
+                {% for comment in comments %}
+                <div class="comment">
+                    <strong>{{ comment.author.username }}:</strong>
+                    {{ comment.text }}
+                </div>
+
+                {% endfor%}
+            </div>
+        {% endif %}
+
+        <h3>Add comment</h3>
+        <form action="#" method="post">{% csrf_token %}
+            {{ comment_form.as_p }}
+            <input type="submit" value="Submit comment" />
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    Challenges
+    {% for challenge in challenges %}
+        <a href="{{ challenge.get_absolute_url }}">{{ challenge }}</a>
+    {% endfor %}
+
+{% endblock %}

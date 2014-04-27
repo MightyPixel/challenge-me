@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    Causes
+    <a href="/causes/new">Submit a cause</a>
+    <div id="causes">
+        {% for cause in causes %}
+            <a href="{{ cause.get_absolute_url }}">{{ cause.title }}</a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
